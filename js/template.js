@@ -22,6 +22,8 @@ var getBadges = function(t, includeTitle){
     }
     
     if(lowercaseName.indexOf('dynamic') > -1){
+      // dyanmic badges can have their function rerun after a set number
+      // of seconds defined by refresh. Minimum of 10 seconds.
       return [{
         dynamic: function(){
           return {
@@ -35,6 +37,7 @@ var getBadges = function(t, includeTitle){
       }]
     }
     
+    // return an array of badge objects
     return [{
       title: includeTitle ? 'Detail Badge' : null,
       text: 'Static',
@@ -71,6 +74,10 @@ TrelloPowerUp.initialize({
     throw t.NotHandled();
   },
   'show-settings': function(t, options){
-    throw t.NotHandled();
+    return t.popup({
+      title: 'Settings',
+      url: './settings.html',
+      height: 160
+    });
   }
 });
