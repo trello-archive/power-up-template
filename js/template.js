@@ -37,13 +37,17 @@ var getBadges = function(t, includeTitle){
       }]
     }
     
-    // return an array of badge objects
-    return [{
-      title: includeTitle ? 'Detail Badge' : null,
-      text: 'Static',
-      icon: icon,
-      color: badgeColor
-    }];
+    if(lowercaseName.indexOf('static') > -1){
+      // return an array of badge objects
+      return [{
+        title: includeTitle ? 'Detail Badge' : null,
+        text: 'Static',
+        icon: icon,
+        color: badgeColor
+      }];
+    } else {
+      return [];
+    }
   })
 };
 
