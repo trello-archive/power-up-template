@@ -47,6 +47,29 @@ var getBadges = function(t, includeTitle){
   })
 };
 
+var formatNPSUrl = function(t, url){
+  var parkMap = {
+    arch: 'Arches National Park',
+    brca: 'Bryce Canyon National Park',
+    crla: 'Crater Lake National Park',
+    dena: 'Denali National Park',
+    glac: 'Glacier National Park',
+    grca: 'Grand Canyon National Park',
+    olym: 'Olympic National Park',
+    yell: 'Yellowstone National Park',
+    yose: 'Yosemite National Park'
+  };
+  var parkShort = /^https?:\/\/www\.nps\.gov\/([a-z]{4})\//.exec(url)[1];
+  if(parkShort && parkMap[parkShort]){
+    return {
+      icon: GRAY_ICON,
+      text: parkMap[parkShort]
+    };
+  } else{
+    throw t.NotHandled();
+  }
+};
+
 TrelloPowerUp.initialize({
   'attachment-sections': function(t, options){
     return [];
@@ -71,13 +94,19 @@ TrelloPowerUp.initialize({
     throw t.NotHandled();
   },
   'format-url': function(t, options) {
-    throw t.NotHandled();
+    // we check to see if the url is a National Park Service url
+    if(/^https?:\/\/www\.nps\.gov\/[a-z]{4}\//.test(options.url)){
+      // we will return the park name for the url if we know it
+      return formatNPSUrl(t, options.url);
+    } else {
+      throw t.NotHandled();
+    }
   },
   'show-settings': function(t, options){
     return t.popup({
       title: 'Settings',
       url: './settings.html',
-      height: 160
+      height: 184
     });
   }
 });
