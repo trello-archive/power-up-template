@@ -80,7 +80,20 @@ TrelloPowerUp.initialize({
     return [];
   },
   'attachment-thumbnail': function(t, options){
-    throw t.NotHandled();
+    var parkName = formatNPSUrl(t, options.url);
+    if(parkName){
+      return {
+        url: options.url,
+        title: parkName,
+        image: {
+          url: './images/nps.svg',
+          logo: true
+        },
+        openText: 'Open in NPS'
+      };
+    } else {
+      throw t.NotHandled();
+    }
   },
   'board-buttons': function(t, options){
     return [];
