@@ -48,6 +48,10 @@ var getBadges = function(t, includeTitle){
 };
 
 var formatNPSUrl = function(t, url){
+  if(!/^https?:\/\/www\.nps\.gov\/[a-z]{4}\//.test(url)){
+    return null;
+  }
+  
   var parkMap = {
     arch: 'Arches National Park',
     brca: 'Bryce Canyon National Park',
@@ -61,12 +65,9 @@ var formatNPSUrl = function(t, url){
   };
   var parkShort = /^https?:\/\/www\.nps\.gov\/([a-z]{4})\//.exec(url)[1];
   if(parkShort && parkMap[parkShort]){
-    return {
-      icon: GRAY_ICON,
-      text: parkMap[parkShort]
-    };
+    return parkMap[parkShort];
   } else{
-    throw t.NotHandled();
+    return null;
   }
 };
 
@@ -91,13 +92,23 @@ TrelloPowerUp.initialize({
     return getBadges(t, true);
   },
   'card-from-url': function(t, options) {
-    throw t.NotHandled();
+    var parkName = formatNPSUrl(t, options.url);
+    if(parkName){
+      return {
+        name: parkName,
+        desc: 'An awesome park: ' + options.url
+      };
+    } else {
+      throw t.NotHandled();
+    }
   },
   'format-url': function(t, options) {
-    // we check to see if the url is a National Park Service url
-    if(/^https?:\/\/www\.nps\.gov\/[a-z]{4}\//.test(options.url)){
-      // we will return the park name for the url if we know it
-      return formatNPSUrl(t, options.url);
+    var parkName = formatNPSUrl(t, options.url);
+    if(parkName){
+      return {
+        icon: GRAY_ICON,
+        text: parkName
+      };
     } else {
       throw t.NotHandled();
     }
