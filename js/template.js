@@ -157,7 +157,8 @@ TrelloPowerUp.initialize({
         title: 'Example Attachment Section: Yellowstone',
         content: {
           type: 'iframe',
-          url: t.signUrl('./section.html', { arg: 'you can pass your section args here' })
+          url: t.signUrl('./section.html', { arg: 'you can pass your section args here' }),
+          height: 210
         }
       }];
     } else {
@@ -167,6 +168,8 @@ TrelloPowerUp.initialize({
   'attachment-thumbnail': function(t, options){
     var parkName = formatNPSUrl(t, options.url);
     if(parkName){
+      // return an object with some or all of these properties:
+      // url, title, image, openText, modified (Date), created (Date), createdBy, modifiedBy
       return {
         url: options.url,
         title: parkName,
