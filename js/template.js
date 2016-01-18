@@ -36,7 +36,7 @@ var getBadges = function(t){
       badgeColor = 'red';
       icon = WHITE_ICON;
     }
-    
+
     if(lowercaseName.indexOf('dynamic') > -1){
       // dynamic badges can have their function rerun after a set number
       // of seconds defined by refresh. Minimum of 10 seconds.
@@ -52,7 +52,7 @@ var getBadges = function(t){
         }
       }]
     }
-    
+
     if(lowercaseName.indexOf('static') > -1){
       // return an array of badge objects
       return [{
@@ -89,6 +89,9 @@ var boardButtonCallback = function(t){
           return t.overlay({
             url: './overlay.html',
             args: { rand: (Math.random() * 100).toFixed(0) }
+          })
+          .then(function(){
+            return t.closePopup();
           });
         }
       },
@@ -98,6 +101,9 @@ var boardButtonCallback = function(t){
           return t.boardBar({
             url: './board-bar.html',
             height: 200
+          })
+          .then(function(){
+            return t.closePopup();
           });
         }
       }
@@ -119,7 +125,7 @@ var cardButtonCallback = function(t){
       }
     };
   });
-  
+
   return t.popup({
     title: 'Popup Search Example',
     items: items,
@@ -136,12 +142,12 @@ TrelloPowerUp.initialize({
     // options.entries is a list of the attachments for this card
     // you can look through them and 'claim' any that you want to
     // include in your section.
-    
+
     // we will just claim urls for Yellowstone
     var claimed = options.entries.filter(function(attachment){
       return attachment.url.indexOf('http://www.nps.gov/yell/') == 0;
     });
-    
+
     // you can have more than one attachment section on a card
     // you can group items together into one section, have a section
     // per attachment, or anything in between.
