@@ -26,9 +26,9 @@ t.render(function(){
 });
 
 document.getElementById('save').addEventListener('click', function(){
-  t.set('board', 'shared', 'fruit', fruitSelector.value)
+  return t.set('board', 'private', 'vegetable', vegetableSelector.value)
   .then(function(){
-    t.set('board', 'private', 'vegetable', vegetableSelector.value);
+    return t.set('board', 'shared', 'fruit', fruitSelector.value);
   })
   .then(function(){
     t.closePopup();
