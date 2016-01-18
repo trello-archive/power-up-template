@@ -158,7 +158,7 @@ TrelloPowerUp.initialize({
         content: {
           type: 'iframe',
           url: t.signUrl('./section.html', { arg: 'you can pass your section args here' }),
-          height: 210
+          height: 230
         }
       }];
     } else {
