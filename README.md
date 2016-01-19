@@ -1,7 +1,7 @@
 # Trello Power-Up Template
 A static GitHub pages hosted sample Power-Up. Feel free to fork this repo as a starting point for your own Trello Power-Up.
 
-Want to learn more about building Power-Ups for Trello? Visit our [developer site](https://developers.trello.com/power-ups) for all of the latest information.
+Want to learn more about building Power-Ups for Trello? Visit our [developer site](https://developers.trello.com/power-ups) for all of the latest information. Want to try this sample out right away without waiting? Put this url (https://trello.github.io/power-up-template/manifest.json) into the prompt on https://trello.com/power-up-preview then you will see a new Power-Up called 'Static Template' show up in your list of Power-Ups.
 
 ## Features
 
