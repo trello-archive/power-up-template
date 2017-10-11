@@ -1,38 +1,31 @@
 # Trello Power-Up Template
-A static GitHub pages hosted sample Power-Up. Feel free to fork this repo as a starting point for your own Trello Power-Up.
 
-Want to learn more about building Power-Ups for Trello? Visit our [developer site](https://developers.trello.com/power-ups) for all of the latest information. Want to try this sample out right away without waiting? Put this url (https://trello.github.io/power-up-template/manifest.json) into the prompt on https://trello.com/power-up-preview then you will see a new Power-Up called 'Static Template' show up in your list of Power-Ups.
+Hey there 👋
 
-## Features
+This is a full featured sample Trello Power-Up. What does that mean for you? We hope it's a great starting point for you to fork, and make your own great Power-Up that makes Trello work even better for you. 
 
-### Attachment Sections
-To see how the attachment-sections capability works, try attaching the following url to a card: http://www.nps.gov/yell/index.htm
+Want to try this sample out right away without waiting? Go ahead and grab the manifest URL (https://trello.github.io/power-up-template/manifest.json). If you've forked it, you should grab your fork's manifest URL. And then head here:
 
-### Attachment Thumbnail
-To see how the attachment-thumbnail capability works, try attaching the following url onto any card: http://www.nps.gov/glac/index.htm
+👉  [https://trello.com/power-ups/admin](https://trello.com/power-ups/admin)
 
-### Board Buttons
-To see how the board-buttons capability works, try clicking the 'Template' button at the top right of the board after enabling this Power-Up.
+Select the Trello team you want to add the Power-Up to. Note: You need to be an admin of the Trello team to add custom Power-Ups to it.
 
-### Card Badges & Card Detail Badges
-To see how card-badges and card-detail-badges capabilities work, create some cards on a board with this Power-Up enabled that contain variations of the following keywords in the name:
+Now click the `Create new Power-Up` button. If this is your first time creating a Power-Up, you'll need to agree to a "Joint Developer Agreement" first. After you have done that, you just need to give your cool new Power-Up a name, and paste the manifest url link in (the one you created earlier).
 
-- static - Shows a badge on the card that doesn't change
-- dynamic - Shows a badge on the card that updates every 10 seconds
-- green - colors the badge green
-- yellow - colors the badge yellow
-- red - colors the badge red
+Click `Save` and it's time to celebrate 🎉 🎊
 
-card-badges are what shows up on the front of cards, and card-detail-badges show up underneath the card name when you open a card.
+Now when you look at the Power-Ups for any board in that team, your awesome new Power-Up will be available. All changes you commit and push to the repo will be reflected in the Power-Up!
 
-### Card Buttons
-To see how the card-buttons capability works, try opening a card after this Power-Up is enabled, and clicking the button called 'Template'.
+---
 
-### Card From Url
-To see how the card-from-url capability works, try pasting (Ctrl+v) the following url onto any 'Add a card...' button: http://www.nps.gov/crla/index.htm
+Want more information about Power-Ups? 🤔
 
-### Format Url
-To see how the format-url capability works, try pasting the following link into a comment or description on a card: http://www.nps.gov/grca/index.htm
+👉  [https://developers.trello.com/power-ups/intro](https://developers.trello.com/power-ups/intro)
 
-### Show Settings
-To see how the show-settings capability works, try clicking the gear button next to the Power-Up in the Power-Ups menu.
+We even have office hours you can sign up for if you want to talk to a real live person about your Power-Up. Just grab a slot that works for you on this [calendar](https://calendar.google.com/calendar/selfsched?sstoken=UU5DczNLUkNIbk5ifGRlZmF1bHR8YzJmZWM4YWM0NTgxMTE1NmRmMzgxNzMwODRjYzEwZGU). (Remember to add a bit about what you'd like help with when signing up for a slot).
+
+---
+
+Looking for a more _realistic_ example Power-Up? You may find the Trello Card Snooze Power-Up useful. 😴
+
+👉  [Trello Card Snooze Glitch Project](https://glitch.com/edit/#!/trellocardsnooze)

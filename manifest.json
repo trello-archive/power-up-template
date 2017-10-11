@@ -7,6 +7,7 @@
   },
   "author": "Trello Inc",
   "capabilities": [
+    "authorization-status",
     "attachment-sections",
     "attachment-thumbnail",
     "board-buttons",
@@ -16,14 +17,12 @@
     "card-detail-badges",
     "card-from-url",
     "format-url",
+    "show-authorization",
     "show-settings"
   ],
   "connectors": {
     "iframe": {
       "url": "./index.html"
     }
-  },
-  "recommend": {
-    "urls": []
   }
 }
