@@ -12,6 +12,10 @@ t.render(function(){
   // stored with t.set()
 });
 
+// Important! If you are using the overlay, you should implement
+// the following two methods to ensure that closing the overlay
+// is simple and consistent for the Trello user
+
 // close overlay if user clicks outside our content
 document.addEventListener('click', function(e) {
   if(e.target.tagName == 'BODY') {
