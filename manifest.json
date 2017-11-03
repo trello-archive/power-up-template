@@ -1,0 +1,28 @@
+{
+  "name": "Static Template",
+  "description": "",
+  "details": "A static sample Power-Up hosted on GitHub pages. Feel free to fork [this repository](https://github.com/trello/power-up-template) as a starting point for your own Power-Up.",
+  "icon": {
+    "url": "./images/logo.png"
+  },
+  "author": "Trello Inc",
+  "capabilities": [
+    "authorization-status",
+    "attachment-sections",
+    "attachment-thumbnail",
+    "board-buttons",
+    "callback",
+    "card-badges",
+    "card-buttons",
+    "card-detail-badges",
+    "card-from-url",
+    "format-url",
+    "show-authorization",
+    "show-settings"
+  ],
+  "connectors": {
+    "iframe": {
+      "url": "./index.html"
+    }
+  }
+}
