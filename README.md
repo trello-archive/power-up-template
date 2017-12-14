@@ -2,7 +2,7 @@
 
 Hey there 👋
 
-This is a full featured sample Trello Power-Up. What does that mean for you? We hope it's a great starting point for you to fork, and make your own great Power-Up that makes Trello work even better for you. 
+This is a full featured sample Trello Power-Up. What does that mean for you? We hope it's a great starting point for you to fork, and make your own great Power-Up that makes Trello work even better for you.
 
 Want to try this sample out right away without waiting? Go ahead and grab the manifest URL (https://trello.github.io/power-up-template/manifest.json). If you've forked it, you should grab your fork's manifest URL. And then head here:
 

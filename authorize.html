@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://trello.com/power-ups/power-up.css">
-    <script src="https://trello.com/power-ups/power-up.min.js"></script>
+    <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css">
+    <script src="https://p.trellocdn.com/power-up.min.js"></script>
   </head>
   <body>
     <h1>
@@ -12,7 +12,7 @@
       To make full use of our Power-Up, we're going to need you to authorize us to access your Trello account!
     </p>
     <button id="auth-btn" type="submit" class="mod-primary">Authorize Access To Trello</button>
-    
+
     <script>
       var Promise = TrelloPowerUp.Promise;
       var t = TrelloPowerUp.iframe();
@@ -20,7 +20,7 @@
       var apiKey = t.arg('apiKey'); // Passed in as an argument to our iframe
 
       var trelloAuthUrl = `https://trello.com/1/authorize?expiration=1hour&name=Example%20Trello%20Power-Up&scope=read&key=${apiKey}&callback_method=fragment&return_url=${window.location.origin}%2Fauth-success.html`;
-      
+
       var tokenLooksValid = function(token) {
         // If this returns false, the Promise won't resolve.
         return /^[0-9a-f]{64}$/.test(token);
