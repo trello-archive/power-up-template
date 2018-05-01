@@ -4,17 +4,17 @@ Hey there 👋
 
 This is a full featured sample Trello Power-Up. What does that mean for you? We hope it's a great starting point for you to fork, and make your own great Power-Up that makes Trello work even better for you.
 
-Want to try this sample out right away without waiting? Go ahead and grab the manifest URL (https://trello.github.io/power-up-template/manifest.json). If you've forked it, you should grab your fork's manifest URL. And then head here:
+Want to try this sample out right away without waiting? Go ahead and grab the connector URL (https://trello.github.io/power-up-template/index.html). If you've forked it, you should grab your fork's connector URL. And then head here:
 
 👉  [https://trello.com/power-ups/admin](https://trello.com/power-ups/admin)
 
 Select the Trello team you want to add the Power-Up to. Note: You need to be an admin of the Trello team to add custom Power-Ups to it.
 
-Now click the `Create new Power-Up` button. If this is your first time creating a Power-Up, you'll need to agree to a "Joint Developer Agreement" first. After you have done that, you just need to give your cool new Power-Up a name, and paste the manifest url link in (the one you created earlier).
+Now click the `Create new Power-Up` button. If this is your first time creating a Power-Up, you'll need to agree to a "Joint Developer Agreement" first. After you have done that, you need to give your cool new Power-Up a name, and paste the connector URL in (the one you created earlier). You can read about what all of the fields are used for at [Managing Power-Ups](https://developers.trello.com/v1.0/docs/managing-power-ups).
 
 Click `Save` and it's time to celebrate 🎉 🎊
 
-Now when you look at the Power-Ups for any board in that team, your awesome new Power-Up will be available. All changes you commit and push to the repo will be reflected in the Power-Up!
+Now when you look at the Power-Ups for any board in that team, your awesome new Power-Up will be available under the `Custom` section. All changes you commit and push to the repo will be reflected in the Power-Up!
 
 ---
 
