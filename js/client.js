@@ -89,7 +89,7 @@ var getBadges = function(t){
   .get('name')
   .then(function(cardName){
     console.log('We just loaded the card name for fun: ' + cardName);
-    
+
     return [{
       // dynamic badges can have their function rerun after a set number
       // of seconds defined by refresh. Minimum of 10 seconds.
@@ -144,10 +144,10 @@ var boardButtonCallback = function(t){
       {
         text: 'Open Modal',
         callback: function(t){
-          return t.modal({            
+          return t.modal({
             url: './modal.html', // The URL to load for the iframe
             args: { text: 'Hello' }, // Optional args to access later with t.arg('text') on './modal.html'
-            accentColor: '#F2D600', // Optional color for the modal header 
+            accentColor: '#F2D600', // Optional color for the modal header
             height: 500, // Initial height for iframe; not used if fullscreen is true
             fullscreen: true, // Whether the modal should stretch to take up the whole screen
             callback: () => console.log('Goodbye.'), // optional function called if user closes modal (via `X` or escape)
@@ -229,7 +229,7 @@ var cardButtonCallback = function(t){
       empty: 'No parks found'
     }
   });
-  
+
   // in the above case we let Trello do the searching client side
   // but what if we don't have all the information up front?
   // no worries, instead of giving Trello an array of `items` you can give it a function instead
@@ -250,6 +250,10 @@ var cardButtonCallback = function(t){
   */
 };
 
+setTimeout(function(){
+    t.card('checklists').get('checklists').then();
+}, 3000);
+
 // We need to call initialize to get all of our capability handles set up and registered with Trello
 TrelloPowerUp.initialize({
   // NOTE about asynchronous responses
@@ -260,7 +264,7 @@ TrelloPowerUp.initialize({
     // options.entries is a list of the attachments for this card
     // you can look through them and 'claim' any that you want to
     // include in your section.
-
+    console.log("attachment");
     // we will just claim urls for Yellowstone
     var claimed = options.entries.filter(function(attachment){
       return attachment.url.indexOf('http://www.nps.gov/yell/') === 0;
@@ -293,7 +297,7 @@ TrelloPowerUp.initialize({
     // options.url has the url of the attachment for us
     // return an object (or a Promise that resolves to it) with some or all of these properties:
     // url, title, image, modified (Date), created (Date), createdBy, modifiedBy
-    
+    console.log("attachmentthumbnail");
     // You should use this if you have useful information about an attached URL but it
     // doesn't warrant pulling it out into a section via the attachment-sections capability
     // for example if you just want to show a preview image and give it a better name
@@ -306,12 +310,14 @@ TrelloPowerUp.initialize({
         logo: true // false if you are using a thumbnail of the content
       },
     };
-    
+
     // if we don't actually have any valuable information about the url
     // we can let Trello know like so:
     // throw t.NotHandled();
   },
   'board-buttons': function(t, options){
+      console.log("boardbuttons");
+
     return [{
       // we can either provide a button that has a callback function
       // that callback function should probably open a popup, overlay, or boardBar
@@ -328,9 +334,11 @@ TrelloPowerUp.initialize({
     }];
   },
   'card-badges': function(t, options){
+      console.log("badges");
     return getBadges(t);
   },
   'card-buttons': function(t, options) {
+      console.log("buttons");
     return [{
       // usually you will provide a callback function to be run on button click
       // we recommend that you use a popup on click generally
@@ -346,22 +354,25 @@ TrelloPowerUp.initialize({
     }];
   },
   'card-detail-badges': function(t, options) {
+      console.log("detail");
     return getBadges(t);
   },
   'card-from-url': function(t, options) {
+      console.log("url");
     // options.url has the url in question
     // if we know cool things about that url we can give Trello a name and desc
     // to use when creating a card. Trello will also automatically add that url
     // as an attachment to the created card
     // As always you can return a Promise that resolves to the card details
-    
+
     return new Promise(function(resolve) {
+        console.log("Promise");
       resolve({
         name: '💻 ' + options.url + ' 🤔',
         desc: 'This Power-Up knows cool things about the attached url'
       });
     });
-    
+
     // if we don't actually have any valuable information about the url
     // we can let Trello know like so:
     // throw t.NotHandled();
@@ -369,17 +380,18 @@ TrelloPowerUp.initialize({
   'format-url': function(t, options) {
     // options.url has the url that we are being asked to format
     // in our response we can include an icon as well as the replacement text
-    
+        console.log("format-url");
     return {
       icon: GRAY_ICON, // don't use a colored icon here
-      text: '👉 ' + options.url + ' 👈' 
+      text: '👉 ' + options.url + ' 👈'
     };
-    
+
     // if we don't actually have any valuable information about the url
     // we can let Trello know like so:
     // throw t.NotHandled();
   },
   'show-settings': function(t, options){
+      console.log("show");
     // when a user clicks the gear icon by your Power-Up in the Power-Ups menu
     // what should Trello show. We highly recommend the popup in this case as
     // it is the least disruptive, and fits in well with the rest of Trello's UX
@@ -389,24 +401,25 @@ TrelloPowerUp.initialize({
       height: 184 // we can always resize later, but if we know the size in advance, its good to tell Trello
     });
   },
-  
-  /*        
-      
+
+  /*
+
       🔑 Authorization Capabiltiies 🗝
-      
+
       The following two capabilities should be used together to determine:
       1. whether a user is appropriately authorized
       2. what to do when a user isn't completely authorized
-      
+
   */
   'authorization-status': function(t, options){
+      console.log("authorizationstatus");
     // Return a promise that resolves to an object with a boolean property 'authorized' of true or false
     // The boolean value determines whether your Power-Up considers the user to be authorized or not.
-    
+
     // When the value is false, Trello will show the user an "Authorize Account" options when
     // they click on the Power-Up's gear icon in the settings. The 'show-authorization' capability
     // below determines what should happen when the user clicks "Authorize Account"
-    
+
     // For instance, if your Power-Up requires a token to be set for the member you could do the following:
     return t.get('member', 'private', 'token')
     .then(function(token){
@@ -418,15 +431,16 @@ TrelloPowerUp.initialize({
     // You can also return the object synchronously if you know the answer synchronously.
   },
   'show-authorization': function(t, options){
+      console.log("authorization");
     // Returns what to do when a user clicks the 'Authorize Account' link from the Power-Up gear icon
     // which shows when 'authorization-status' returns { authorized: false }.
-    
+
     // If we want to ask the user to authorize our Power-Up to make full use of the Trello API
     // you'll need to add your API from trello.com/app-key below:
     let trelloAPIKey = '';
     // This key will be used to generate a token that you can pass along with the API key to Trello's
     // RESTful API. Using the key/token pair, you can make requests on behalf of the authorized user.
-    
+
     // In this case we'll open a popup to kick off the authorization flow.
     if (trelloAPIKey) {
       return t.popup({
